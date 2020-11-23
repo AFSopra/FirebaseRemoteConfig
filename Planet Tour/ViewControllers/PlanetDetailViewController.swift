@@ -55,7 +55,7 @@ class PlanetDetailViewController: UIViewController {
 private extension PlanetDetailViewController {
   func updateLabelColors() {
     for case let nextLabel? in [yearTitle, massTitle, funFactTitle] {
-      nextLabel.textColor = AppConstants.appPrimaryColor
+      nextLabel.textColor = RCValues.sharedInstance.color(forKey: .appPrimaryColor)
     }
 
     for case let nextLabel? in [yearLengthLabel, massLabel, funFactLabel] {

@@ -63,7 +63,7 @@ private extension GetNewsletterViewController {
   }
 
   func updateSubmitButton() {
-    submitButton.backgroundColor = AppConstants.appPrimaryColor
+    submitButton.backgroundColor = RCValues.sharedInstance.color(forKey: .appPrimaryColor)
     submitButton.layer.cornerRadius = 5.0
   }
 }

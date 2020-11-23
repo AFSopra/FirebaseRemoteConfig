@@ -54,7 +54,9 @@ private extension ContainerViewController {
   }
 
   func updateBanner() {
-    bannerView.backgroundColor = AppConstants.appPrimaryColor
+    //si el valor es estatico, queda como sigue
+//    bannerView.backgroundColor = AppConstants.appPrimaryColor
+    bannerView.backgroundColor = RCValues.sharedInstance.color(forKey: .appPrimaryColor)
     bannerLabel.text = AppConstants.subscribeBannerText
     getNewsletterButton.setTitle(AppConstants.subscribeBannerButton, for: .normal)
   }

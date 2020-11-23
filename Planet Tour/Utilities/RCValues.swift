@@ -28,8 +28,15 @@
 
 import Firebase
 
+enum ValueKey: String {
+  case appPrimaryColor
+}
+
 class RCValues {
   static let sharedInstance = RCValues()
+
+  var loadingDoneCallback: (() -> Void)?
+  var fetchComplete = false
 
   private init() {
     loadDefaultValues()
@@ -39,7 +46,7 @@ class RCValues {
   func loadDefaultValues() {
     // pasamos un conjunto de clave-valor al RC como default
     let appDefaults: [String: Any?] = [
-      "appPrimaryColor": "#FBB03B",
+      ValueKey.appPrimaryColor.rawValue: "#FBB03B",
     ]
     RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
   }
@@ -56,7 +63,7 @@ class RCValues {
     #if DEBUG
       let fetchDuration: TimeInterval = 0
 
-      RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
+      RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { [weak self] _, error in
 
         if let error = error {
           print("Uh-oh. Got an error fetching remote values \(error)")
@@ -67,12 +74,16 @@ class RCValues {
         print("DEBUG - Retrieved values from the cloud!")
 
         // Podríamos obtener los valores como sigue, con su clave
-        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor"))")
-        // Puede venir en 3 valores distintos
-        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").stringValue ?? "")")
-        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").boolValue)")
-        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").numberValue ?? 0)")
+        print("DEBUG - Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor"))")
 
+        let appPrimaryColorString = RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").stringValue ?? ""
+        // Puede venir en 3 valores distintos
+        print("DEBUG - Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").stringValue ?? "")")
+        print("DEBUG - Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").boolValue)")
+        print("DEBUG - Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").numberValue ?? 0)")
+
+        self?.fetchComplete = true
+        self?.loadingDoneCallback?()
       }
     #else
       RemoteConfig.remoteConfig().fetch { _, error in
@@ -83,7 +94,18 @@ class RCValues {
 
         RemoteConfig.remoteConfig().activateFetched()
         print("PRO - Retrieved values from the cloud!")
+
+        let appPrimaryColorString = RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").stringValue ?? ""
+
+        self?.fetchComplete = true
+        self?.loadingDoneCallback?()
       }
     #endif
+  }
+
+  func color(forKey key: ValueKey) -> UIColor {
+    let colorAsHexString = RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? "#FFFFFF"
+    let convertedColor = UIColor(colorAsHexString)
+    return convertedColor
   }
 }

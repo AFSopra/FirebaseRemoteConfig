@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ksm-iv-QfK">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ksm-iv-QfK">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +13,7 @@
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="6bv-LL-yH0" customClass="PlanetsCollectionViewController" customModule="Planet_Tour" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" id="0em-Xy-n8G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbu-79-LSu" customClass="PlanetaryCollectionViewFlowLayout" customModule="Planet_Tour" customModuleProvider="target">
                             <size key="itemSize" width="250" height="319"/>
@@ -28,7 +23,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlanetCell" id="70i-bT-mcS" customClass="PlanetCell" customModule="Planet_Tour" customModuleProvider="target">
-                                <rect key="frame" x="100" y="124.5" width="250" height="319"/>
+                                <rect key="frame" x="100" y="156.5" width="250" height="319"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="319"/>
@@ -82,31 +77,32 @@
             <objects>
                 <viewController storyboardIdentifier="Waiting View Controller" id="0qg-3P-oEj" customClass="WaitingViewController" customModule="Planet_Tour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xQH-Jf-lsy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just a moment..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZ4-On-D6v">
-                                <rect key="frame" x="124" y="367" width="127" height="23.5"/>
+                                <rect key="frame" x="124" y="347.5" width="127" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mars" translatesAutoresizingMaskIntoConstraints="NO" id="Spw-yu-DKs">
-                                <rect key="frame" x="65.5" y="108.5" width="244" height="243.5"/>
+                                <rect key="frame" x="65.5" y="88.5" width="244" height="244"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Spw-yu-DKs" secondAttribute="height" multiplier="1:1" id="JER-eT-Mcv"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planet Tour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cat-JT-Jxq">
-                                <rect key="frame" x="99.5" y="28" width="176" height="45.5"/>
+                                <rect key="frame" x="99.5" y="8" width="176" height="45.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="33"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="0z2-J1-gI2">
-                                <rect key="frame" x="177.5" y="410.5" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="391" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="iaJ-w0-CDh"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cat-JT-Jxq" firstAttribute="top" secondItem="iaJ-w0-CDh" secondAttribute="top" constant="8" id="5Fw-Si-bwL"/>
@@ -119,7 +115,6 @@
                             <constraint firstItem="FZ4-On-D6v" firstAttribute="top" secondItem="Spw-yu-DKs" secondAttribute="bottom" constant="15" id="yFH-gZ-fnt"/>
                             <constraint firstItem="cat-JT-Jxq" firstAttribute="centerX" secondItem="iaJ-w0-CDh" secondAttribute="centerX" id="zMK-Lm-N1b"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="iaJ-w0-CDh"/>
                     </view>
                     <navigationItem key="navigationItem" id="24q-rp-2zn"/>
                     <connections>
@@ -136,17 +131,17 @@
             <objects>
                 <viewController storyboardIdentifier="Planet Container" id="aU9-RF-ZPZ" userLabel="Planet Container" customClass="ContainerViewController" customModule="Planet_Tour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tgE-YL-233">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCa-0i-siv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
                                 <connections>
                                     <segue destination="6bv-LL-yH0" kind="embed" id="Yci-Ni-v45"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-Jo-Z7O" userLabel="Mini Banner">
-                                <rect key="frame" x="0.0" y="568" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like Planet Tour?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qh-bG-IhY">
                                         <rect key="frame" x="8" y="6.5" width="123.5" height="22"/>
@@ -154,7 +149,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyz-dw-7Eb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyz-dw-7Eb">
                                         <rect key="frame" x="206" y="-0.5" width="161" height="36"/>
                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
                                         <state key="normal" title="Get the newsletter!">
@@ -177,6 +172,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="y6O-gU-TPW"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LCa-0i-siv" firstAttribute="top" secondItem="y6O-gU-TPW" secondAttribute="top" id="2OO-Ky-Nlc"/>
@@ -187,7 +183,6 @@
                             <constraint firstItem="LCa-0i-siv" firstAttribute="centerX" secondItem="y6O-gU-TPW" secondAttribute="centerX" id="RNr-vb-IWd"/>
                             <constraint firstItem="LCa-0i-siv" firstAttribute="width" secondItem="tgE-YL-233" secondAttribute="width" id="Vbd-K3-ZJa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="y6O-gU-TPW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Planet Tour" id="uBw-xx-GCS"/>
                     <connections>
@@ -205,7 +200,7 @@
             <objects>
                 <viewController id="CWe-th-J5g" customClass="GetNewsletterViewController" customModule="Planet_Tour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cUV-xz-Ckv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76M-YM-5rz">
@@ -217,7 +212,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! Be on the lookout for your next issue!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nkR-wl-kkC">
-                                <rect key="frame" x="19" y="411" width="337.5" height="23"/>
+                                <rect key="frame" x="19" y="410.5" width="337.5" height="23"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -228,7 +223,7 @@
                                     <constraint firstAttribute="width" secondItem="hRm-RO-kDr" secondAttribute="height" multiplier="750:472" id="R66-Wb-Ol2"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwe-qO-L6b">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwe-qO-L6b">
                                 <rect key="frame" x="76" y="419" width="223" height="34"/>
                                 <color key="backgroundColor" red="0.90742586096938771" green="0.28160873724489793" blue="0.2392156862745097" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
@@ -249,6 +244,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="RMV-vH-qz2"/>
                         <color key="backgroundColor" red="0.19215686274509802" green="0.22352941176470587" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zwe-qO-L6b" firstAttribute="top" secondItem="76M-YM-5rz" secondAttribute="bottom" constant="21" id="0V5-yw-EMZ"/>
@@ -271,7 +267,6 @@
                             <constraint firstItem="Nd0-cp-pOY" firstAttribute="width" secondItem="cUV-xz-Ckv" secondAttribute="width" multiplier="0.9" id="sS3-Xd-Kab"/>
                             <constraint firstItem="hRm-RO-kDr" firstAttribute="width" secondItem="cUV-xz-Ckv" secondAttribute="width" id="xMA-72-TBe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="RMV-vH-qz2"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Sqt-ST-Z2R"/>
@@ -279,6 +274,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="oCX-Oe-lR1"/>
                     <connections>
                         <outlet property="emailTextField" destination="76M-YM-5rz" id="nMR-rI-IGU"/>
                         <outlet property="instructionLabel" destination="Nd0-cp-pOY" id="fas-XH-1v0"/>
@@ -295,23 +291,23 @@
             <objects>
                 <viewController id="2m5-hX-hoD" customClass="PlanetDetailViewController" customModule="Planet_Tour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="02p-40-r0R">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEg-cH-vya">
-                                <rect key="frame" x="159" y="61" width="58" height="31.5"/>
+                                <rect key="frame" x="158.5" y="41" width="58" height="31.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-xG-Lxb">
-                                <rect key="frame" x="24" y="100.5" width="327" height="327.5"/>
+                                <rect key="frame" x="0.0" y="80.5" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Apw-xG-Lxb" secondAttribute="height" multiplier="1:1" id="vkX-vi-Lki"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jph-cp-5as" userLabel="Row1">
-                                <rect key="frame" x="0.0" y="440" width="375" height="35.5"/>
+                                <rect key="frame" x="0.0" y="483" width="375" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year (in Earth days)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtT-PU-9Zl">
                                         <rect key="frame" x="12" y="6.5" width="156" height="23.5"/>
@@ -320,7 +316,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="365" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3fg-G9-s3A">
-                                        <rect key="frame" x="335" y="6.5" width="27" height="23.5"/>
+                                        <rect key="frame" x="335" y="6" width="27" height="24"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -338,16 +334,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-c5-LDU" userLabel="Row2">
-                                <rect key="frame" x="0.0" y="475.5" width="375" height="35.5"/>
+                                <rect key="frame" x="0.0" y="519" width="375" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mass (in # of Earths)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELH-Uo-oYS">
-                                        <rect key="frame" x="12" y="6" width="164" height="23.5"/>
+                                        <rect key="frame" x="12" y="6.5" width="164" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4zI-PY-vH8">
-                                        <rect key="frame" x="322" y="6" width="40" height="23.5"/>
+                                        <rect key="frame" x="322" y="6" width="40" height="24"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -366,7 +362,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCf-eg-ctM" userLabel="Row3">
-                                <rect key="frame" x="0.0" y="511" width="375" height="57"/>
+                                <rect key="frame" x="0.0" y="555" width="375" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Mostly harmless. They still think digital watches are a pretty neat idea." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="AIY-fm-9nf">
                                         <rect key="frame" x="102.5" y="8" width="259.5" height="41"/>
@@ -395,13 +391,14 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8t-gJ-8cp">
-                                <rect key="frame" x="8" y="428" width="359" height="12"/>
+                                <rect key="frame" x="8" y="471" width="359" height="12"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49151611328125" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.69607115185950419" green="0.69607115185950419" blue="0.69607115185950419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="4AG-rw-1om"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Owf-c5-LDU" firstAttribute="height" secondItem="Jph-cp-5as" secondAttribute="height" id="36Q-cv-kcc"/>
@@ -425,7 +422,6 @@
                             <constraint firstItem="Jph-cp-5as" firstAttribute="centerX" secondItem="4AG-rw-1om" secondAttribute="centerX" id="q4V-ac-a4Y"/>
                             <constraint firstItem="Apw-xG-Lxb" firstAttribute="width" secondItem="02p-40-r0R" secondAttribute="width" priority="750" id="q5S-pm-4ur"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4AG-rw-1om"/>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <exclude reference="hkc-qW-qmY"/>
@@ -433,6 +429,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="NPF-sU-hww"/>
                     <connections>
                         <outlet property="funFactLabel" destination="AIY-fm-9nf" id="6aj-Z7-gDC"/>
                         <outlet property="funFactTitle" destination="X5k-gS-JhK" id="HRz-8g-2Wk"/>
@@ -455,13 +452,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ksm-iv-QfK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="6ka-7k-J5C">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25769731402397156" green="0.29592612385749817" blue="0.32569187879562378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aU9-RF-ZPZ" kind="relationship" relationship="rootViewController" id="o2s-Lz-31p"/>
+                        <segue destination="0qg-3P-oEj" kind="relationship" relationship="rootViewController" id="5Ym-lQ-6HL"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQR-8m-Nmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,7 +470,4 @@
         <image name="Mars" width="200" height="200"/>
         <image name="image-planets" width="375" height="236"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="o2s-Lz-31p"/>
-    </inferredMetricsTieBreakers>
 </document>

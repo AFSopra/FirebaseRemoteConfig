@@ -34,11 +34,15 @@ class WaitingViewController: UIViewController {
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    let delayTime = DispatchTime.now() + 1.0
-    DispatchQueue.main.asyncAfter(deadline: delayTime) {
-      self.performSegue(withIdentifier: "loadingDoneSegue", sender: self)
+    
+    if RCValues.sharedInstance.fetchComplete {
+      startAppForReal()
     }
-    // Do any additional setup after loading the view.
+
+    RCValues.sharedInstance.loadingDoneCallback = startAppForReal
+  }
+
+  func startAppForReal() {
+    performSegue(withIdentifier: "loadingDoneSegue", sender: self)
   }
 }
