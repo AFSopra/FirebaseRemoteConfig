@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class PlanetsCollectionViewController: UICollectionViewController {
-
   // MARK: - Properties
   private let reuseIdentifier = "PlanetCell"
   private let sectionInsets = UIEdgeInsets(top: 10, left: 80, bottom: 10, right: 70)
@@ -56,16 +54,16 @@ class PlanetsCollectionViewController: UICollectionViewController {
 
     removeWaitingViewController()
   }
-  
+
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    
+
     addFancyBackground()
     addMiniMap()
   }
 
   // MARK: - Navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
     guard let planetDetail = segue.destination as? PlanetDetailViewController else { return }
     guard let firstIndexPath = collectionView?.indexPathsForSelectedItems?[0] else { return }
 
@@ -82,11 +80,11 @@ class PlanetsCollectionViewController: UICollectionViewController {
 
 // MARK: - Internal
 extension PlanetsCollectionViewController {
-
   func addFancyBackground() {
     guard starBackground == nil,
-      let galaxyImage = UIImage(named: "GalaxyBackground") else {
-        return
+          let galaxyImage = UIImage(named: "GalaxyBackground")
+    else {
+      return
     }
 
     starBackground = UIImageView(image: galaxyImage)
@@ -110,16 +108,17 @@ extension PlanetsCollectionViewController {
   func customizeNavigationBar() {
     guard let navBar = navigationController?.navigationBar else { return }
 
-    navBar.barTintColor =  AppConstants.navBarBackground
+    navBar.barTintColor = AppConstants.navBarBackground
     let targetFont = UIFont(name: "Avenir-black", size: 18.0) ?? UIFont.systemFont(ofSize: 18.0)
-    navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,
-                                  NSAttributedStringKey.font : targetFont]
+    navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                                  NSAttributedStringKey.font: targetFont]
   }
 
   func removeWaitingViewController() {
     guard let stackViewControllers = navigationController?.viewControllers,
-      let _ = stackViewControllers.first as? WaitingViewController else {
-        return
+          let _ = stackViewControllers.first as? WaitingViewController
+    else {
+      return
     }
 
     navigationController?.viewControllers.remove(at: 0)
@@ -128,26 +127,24 @@ extension PlanetsCollectionViewController {
 
 // MARK: - UICollectionViewDataSource
 extension PlanetsCollectionViewController {
-
-  override func numberOfSections(in collectionView: UICollectionView) -> Int {
+  override func numberOfSections(in _: UICollectionView) -> Int {
     return 1
   }
 
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  override func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
     return SolarSystem.sharedInstance.planetCount()
   }
 
   func getImageSize(for planetNum: Int, withWidth: CGFloat) -> CGFloat {
     let scaleFactor = SolarSystem.sharedInstance.getScaleFactor(for: planetNum)
     return withWidth * CGFloat(scaleFactor)
-
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PlanetCell else {
       return UICollectionViewCell()
     }
-    
+
     let currentPlanet = SolarSystem.sharedInstance.planet(at: indexPath.row)
     let planetImageSize = getImageSize(for: indexPath.row, withWidth: cell.bounds.width)
     cell.imageView.image = currentPlanet.image
@@ -161,21 +158,19 @@ extension PlanetsCollectionViewController {
 
 // MARK: - UICollectionViewDelegate
 extension PlanetsCollectionViewController {
-
-  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  override func collectionView(_: UICollectionView, didSelectItemAt _: IndexPath) {
     performSegue(withIdentifier: "planetDetailSegue", sender: self)
   }
 }
 
 // MARK: - UIScrollViewDelegate
 extension PlanetsCollectionViewController {
-
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     guard let collectionView = collectionView else { return }
 
     // Parallax scrolling!
-    let pctThere:CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
-    let backgroundTravel:CGFloat = starBackground.frame.width -  view.frame.width
+    let pctThere: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
+    let backgroundTravel: CGFloat = starBackground.frame.width - view.frame.width
     starBackground.frame.origin = CGPoint(x: -pctThere * backgroundTravel, y: 0)
 
     // Adjust the mini-map
@@ -188,14 +183,13 @@ extension PlanetsCollectionViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension PlanetsCollectionViewController: UICollectionViewDelegateFlowLayout {
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let cellHeight = biggestSizeThatFits()
     let cellWidth = max(0.5, CGFloat(SolarSystem.sharedInstance.getScaleFactor(for: indexPath.row))) * cellHeight
     return CGSize(width: cellWidth, height: cellHeight)
   }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+  func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, insetForSectionAt _: Int) -> UIEdgeInsets {
     return sectionInsets
   }
 

@@ -7,18 +7,18 @@
  * The MIT License (MIT)
  * Copyright (c) 2014 R0CKSTAR
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
- * and associated documentation files (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, 
- * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * The above copyright notice and this permission notice shall be included in all copies or 
+ * The above copyright notice and this permission notice shall be included in all copies or
  * substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING 
- * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
@@ -30,14 +30,14 @@ import UIKit
  UnableToScanHexValue:      "Scan hex error"
  MismatchedHexStringLength: "Invalid RGB string, number of characters after '#' should be either 3, 4, 6 or 8"
  */
-public enum UIColorInputError : Error {
+public enum UIColorInputError: Error {
   case missingHashMarkAsPrefix,
-  unableToScanHexValue,
-  mismatchedHexStringLength,
-  unableToOutputHexStringForWideDisplayColor
+       unableToScanHexValue,
+       mismatchedHexStringLength,
+       unableToOutputHexStringForWideDisplayColor
 }
 
-extension UIColor {
+public extension UIColor {
   /**
    The shorthand three-digit hexadecimal representation of color.
    #RGB defines to the color #RRGGBB.
@@ -45,11 +45,11 @@ extension UIColor {
    - parameter hex3: Three-digit hexadecimal value.
    - parameter alpha: 0.0 - 1.0. The default is 1.0.
    */
-  public convenience init(hex3: UInt16, alpha: CGFloat = 1) {
+  convenience init(hex3: UInt16, alpha: CGFloat = 1) {
     let divisor = CGFloat(15)
-    let red     = CGFloat((hex3 & 0xF00) >> 8) / divisor
-    let green   = CGFloat((hex3 & 0x0F0) >> 4) / divisor
-    let blue    = CGFloat( hex3 & 0x00F      ) / divisor
+    let red = CGFloat((hex3 & 0xF00) >> 8) / divisor
+    let green = CGFloat((hex3 & 0x0F0) >> 4) / divisor
+    let blue = CGFloat(hex3 & 0x00F) / divisor
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 
@@ -59,12 +59,12 @@ extension UIColor {
 
    - parameter hex4: Four-digit hexadecimal value.
    */
-  public convenience init(hex4: UInt16) {
+  convenience init(hex4: UInt16) {
     let divisor = CGFloat(15)
-    let red     = CGFloat((hex4 & 0xF000) >> 12) / divisor
-    let green   = CGFloat((hex4 & 0x0F00) >>  8) / divisor
-    let blue    = CGFloat((hex4 & 0x00F0) >>  4) / divisor
-    let alpha   = CGFloat( hex4 & 0x000F       ) / divisor
+    let red = CGFloat((hex4 & 0xF000) >> 12) / divisor
+    let green = CGFloat((hex4 & 0x0F00) >> 8) / divisor
+    let blue = CGFloat((hex4 & 0x00F0) >> 4) / divisor
+    let alpha = CGFloat(hex4 & 0x000F) / divisor
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 
@@ -73,11 +73,11 @@ extension UIColor {
 
    - parameter hex6: Six-digit hexadecimal value.
    */
-  public convenience init(hex6: UInt32, alpha: CGFloat = 1) {
+  convenience init(hex6: UInt32, alpha: CGFloat = 1) {
     let divisor = CGFloat(255)
-    let red     = CGFloat((hex6 & 0xFF0000) >> 16) / divisor
-    let green   = CGFloat((hex6 & 0x00FF00) >>  8) / divisor
-    let blue    = CGFloat( hex6 & 0x0000FF       ) / divisor
+    let red = CGFloat((hex6 & 0xFF0000) >> 16) / divisor
+    let green = CGFloat((hex6 & 0x00FF00) >> 8) / divisor
+    let blue = CGFloat(hex6 & 0x0000FF) / divisor
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 
@@ -86,12 +86,12 @@ extension UIColor {
 
    - parameter hex8: Eight-digit hexadecimal value.
    */
-  public convenience init(hex8: UInt32) {
+  convenience init(hex8: UInt32) {
     let divisor = CGFloat(255)
-    let red     = CGFloat((hex8 & 0xFF000000) >> 24) / divisor
-    let green   = CGFloat((hex8 & 0x00FF0000) >> 16) / divisor
-    let blue    = CGFloat((hex8 & 0x0000FF00) >>  8) / divisor
-    let alpha   = CGFloat( hex8 & 0x000000FF       ) / divisor
+    let red = CGFloat((hex8 & 0xFF00_0000) >> 24) / divisor
+    let green = CGFloat((hex8 & 0x00FF_0000) >> 16) / divisor
+    let blue = CGFloat((hex8 & 0x0000_FF00) >> 8) / divisor
+    let alpha = CGFloat(hex8 & 0x0000_00FF) / divisor
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 
@@ -100,19 +100,19 @@ extension UIColor {
 
    - parameter rgba: String value.
    */
-  public convenience init(rgba_throws rgba: String) throws {
+  convenience init(rgba_throws rgba: String) throws {
     guard rgba.hasPrefix("#") else {
       throw UIColorInputError.missingHashMarkAsPrefix
     }
 
-    let hexString: String = String(rgba[String.Index.init(encodedOffset: 1)...])
-    var hexValue:  UInt32 = 0
+    let hexString = String(rgba[String.Index(encodedOffset: 1)...])
+    var hexValue: UInt32 = 0
 
     guard Scanner(string: hexString).scanHexInt32(&hexValue) else {
-        throw UIColorInputError.unableToScanHexValue
+      throw UIColorInputError.unableToScanHexValue
     }
 
-    switch (hexString.count) {
+    switch hexString.count {
     case 3:
       self.init(hex3: UInt16(hexValue))
     case 4:
@@ -131,7 +131,7 @@ extension UIColor {
 
    - parameter rgba: String value.
    */
-  public convenience init(_ rgba: String, defaultColor: UIColor = UIColor.clear) {
+  convenience init(_ rgba: String, defaultColor: UIColor = UIColor.clear) {
     guard let color = try? UIColor(rgba_throws: rgba) else {
       self.init(cgColor: defaultColor.cgColor)
       return
@@ -144,52 +144,52 @@ extension UIColor {
 
    - parameter includeAlpha: Whether the alpha should be included.
    */
-  public func hexStringThrows(_ includeAlpha: Bool = true) throws -> String  {
+  func hexStringThrows(_ includeAlpha: Bool = true) throws -> String {
     var r: CGFloat = 0
     var g: CGFloat = 0
     var b: CGFloat = 0
     var a: CGFloat = 0
-    self.getRed(&r, green: &g, blue: &b, alpha: &a)
+    getRed(&r, green: &g, blue: &b, alpha: &a)
 
-    guard r >= 0 && r <= 1 && g >= 0 && g <= 1 && b >= 0 && b <= 1 else {
+    guard r >= 0, r <= 1, g >= 0, g <= 1, b >= 0, b <= 1 else {
       throw UIColorInputError.unableToOutputHexStringForWideDisplayColor
     }
-    
-    if (includeAlpha) {
+
+    if includeAlpha {
       return String(format: "#%02X%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255), Int(a * 255))
     } else {
       return String(format: "#%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
     }
   }
-  
+
   /**
    Hex string of a UIColor instance, fails to empty string.
-   
+
    - parameter includeAlpha: Whether the alpha should be included.
    */
-  public func hexString(_ includeAlpha: Bool = true) -> String  {
+  func hexString(_ includeAlpha: Bool = true) -> String {
     guard let hexString = try? hexStringThrows(includeAlpha) else {
       return ""
     }
     return hexString
-}
   }
+}
 
-extension String {
+public extension String {
   /**
    Convert argb string to rgba string.
    */
-  public func argb2rgba() -> String? {
-    guard self.hasPrefix("#") else {
+  func argb2rgba() -> String? {
+    guard hasPrefix("#") else {
       return nil
-  }
+    }
 
-    let hexString: String = String(self[self.index(self.startIndex, offsetBy: 1)...])
+    let hexString = String(self[index(startIndex, offsetBy: 1)...])
     switch hexString.count {
     case 4:
-      return "#\(String(hexString[self.index(self.startIndex, offsetBy: 1)...]))\(String(hexString[..<self.index(self.startIndex, offsetBy: 1)]))"
+      return "#\(String(hexString[index(startIndex, offsetBy: 1)...]))\(String(hexString[..<index(startIndex, offsetBy: 1)]))"
     case 8:
-      return "#\(String(hexString[self.index(self.startIndex, offsetBy: 2)...]))\(String(hexString[..<self.index(self.startIndex, offsetBy: 2)]))"
+      return "#\(String(hexString[index(startIndex, offsetBy: 2)...]))\(String(hexString[..<index(startIndex, offsetBy: 2)]))"
     default:
       return nil
     }

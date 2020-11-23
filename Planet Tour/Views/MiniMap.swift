@@ -26,16 +26,14 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class MiniMap: UIView {
-
   // MARK: - Properties
   var mapImage: UIImageView!
   var overviewImage: UIImageView!
   var frameRects: [CGRect]!
-  let originalFrameBasis: CGFloat = 600;
+  let originalFrameBasis: CGFloat = 600
   var oldPlanet: Int = -1
 
   // MARK: - Initializers
@@ -51,14 +49,14 @@ class MiniMap: UIView {
       CGRect(x: 283, y: 5, width: 160, height: 107),
       CGRect(x: 427, y: 39, width: 45, height: 49),
       CGRect(x: 484, y: 40, width: 46, height: 46),
-      CGRect(x: 547, y: 53, width: 17, height: 17)
+      CGRect(x: 547, y: 53, width: 17, height: 17),
     ]
     createMapImage()
     createOverviewImage()
   }
 
   @available(*, unavailable)
-  required init?(coder aDecoder: NSCoder) {
+  required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 

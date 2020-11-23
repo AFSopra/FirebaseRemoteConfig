@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class ContainerViewController: UIViewController {
-
   // MARK: - IBOutlets
   @IBOutlet weak var bannerView: UIView!
   @IBOutlet weak var bannerLabel: UILabel!
@@ -51,11 +49,10 @@ class ContainerViewController: UIViewController {
 
 // MARK: - Private
 private extension ContainerViewController {
-
   func updateNavigationColors() {
     navigationController?.navigationBar.tintColor = AppConstants.navTintColor
   }
-  
+
   func updateBanner() {
     bannerView.backgroundColor = AppConstants.appPrimaryColor
     bannerLabel.text = AppConstants.subscribeBannerText
@@ -65,8 +62,7 @@ private extension ContainerViewController {
 
 // MARK: - IBActions
 extension ContainerViewController {
-
-  @IBAction func getNewsletterButtonWasPressed(_ sender: AnyObject) {
+  @IBAction func getNewsletterButtonWasPressed(_: AnyObject) {
     // No-op right now.
   }
 }

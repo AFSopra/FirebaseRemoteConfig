@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class PlanetDetailViewController: UIViewController {
-
   // MARK: - IBOutlets
   @IBOutlet weak var planetNameLabel: UILabel!
   @IBOutlet weak var planetImage: UIImageView!
@@ -55,7 +53,6 @@ class PlanetDetailViewController: UIViewController {
 
 // MARK: - Private
 private extension PlanetDetailViewController {
-
   func updateLabelColors() {
     for case let nextLabel? in [yearTitle, massTitle, funFactTitle] {
       nextLabel.textColor = AppConstants.appPrimaryColor

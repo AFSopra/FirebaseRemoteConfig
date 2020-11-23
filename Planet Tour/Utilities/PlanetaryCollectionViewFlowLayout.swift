@@ -32,15 +32,15 @@
 import UIKit
 
 class PlanetaryCollectionViewFlowLayout: UICollectionViewFlowLayout {
-
   // MARK: - Properties
   let topSpacing: CGFloat = 80
   let betweenSpacing: CGFloat = 10
 
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     guard let superAttributes = super.layoutAttributesForElements(in: rect),
-      let attributesToReturn = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes] else {
-        return nil
+          let attributesToReturn = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes]
+    else {
+      return nil
     }
 
     for attribute in attributesToReturn where attribute.representedElementKind == nil {
@@ -59,21 +59,21 @@ class PlanetaryCollectionViewFlowLayout: UICollectionViewFlowLayout {
     guard let currentItemAttributes = superItemAttributes.copy() as? UICollectionViewLayoutAttributes else { return nil }
     guard let collectionView = collectionView else { return nil }
     guard let sectionInset = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset else { return nil }
-    
+
     if indexPath.item == 0 {
       var frame = currentItemAttributes.frame
       frame.origin.y = sectionInset.top + topSpacing
       currentItemAttributes.frame = frame
       return currentItemAttributes
     }
-    
+
     let previousIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
     guard let previousFrame = layoutAttributesForItem(at: previousIndexPath)?.frame else { return nil }
 
     let previousFrameRightPoint = previousFrame.origin.y + previousFrame.size.height + betweenSpacing
     let previousFrameTop = previousFrame.origin.y
     let currentFrame = currentItemAttributes.frame
-    let stretchedCurrentFrame =  CGRect(x: currentFrame.origin.x, y: previousFrameTop, width: currentFrame.size.width, height: collectionView.frame.size.height)
+    let stretchedCurrentFrame = CGRect(x: currentFrame.origin.x, y: previousFrameTop, width: currentFrame.size.width, height: collectionView.frame.size.height)
     if !previousFrame.intersects(stretchedCurrentFrame) {
       var frame = currentItemAttributes.frame
       frame.origin.y = sectionInset.top + topSpacing
@@ -89,14 +89,14 @@ class PlanetaryCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
   // This controlls the scrolling of the collection view so that it comes to rest with the closest
   // planet on the center of the screen
-  override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+  override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity _: CGPoint) -> CGPoint {
     guard let cv = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset) }
 
     let cvBounds = cv.bounds
-    let halfWidth = cvBounds.size.width * 0.5;
-    let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth;
+    let halfWidth = cvBounds.size.width * 0.5
+    let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
     if let attributesForVisibleCells = layoutAttributesForElements(in: cvBounds) as [UICollectionViewLayoutAttributes]? {
-      let closestAttribute = attributesForVisibleCells.reduce(nil) { (closest : UICollectionViewLayoutAttributes?, nextAttribute) in
+      let closestAttribute = attributesForVisibleCells.reduce(nil) { (closest: UICollectionViewLayoutAttributes?, nextAttribute) in
         getClosestAttribute(closest, nextAttribute: nextAttribute, targetCenterX: proposedContentOffsetCenterX)
       }
       return CGPoint(x: closestAttribute!.center.x - halfWidth, y: proposedContentOffset.y)

@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class WaitingViewController: UIViewController {
-  
   @IBOutlet weak var justAMomentLabel: UILabel!
 
   // MARK: - View Life Cycle
@@ -43,5 +41,4 @@ class WaitingViewController: UIViewController {
     }
     // Do any additional setup after loading the view.
   }
-  
 }

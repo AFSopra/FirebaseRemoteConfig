@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class SolarSystem {
-
   // MARK: - Properties
   static let sharedInstance = SolarSystem()
 
@@ -102,7 +100,7 @@ class SolarSystem {
       let pluto = Planet(name: "Pluto",
                          yearInDays: 90581,
                          massInEarths: 0.002,
-                         radiusInEarths:  0.035,
+                         radiusInEarths: 0.035,
                          funFact: "Ostracized by friends for giving away too many Game of Thrones spoilers.",
                          imageName: "Pluto",
                          imageCredit: "NASA/JHUAPL/SwRI")
@@ -116,7 +114,7 @@ class SolarSystem {
 
     // Yes, we've hard-coded Jupiter to be our largest planet. That's probably a safe assumption.
     let largestRadius = planet(at: 4).radiusInEarths
-    for i in 0..<planets.count {
+    for i in 0 ..< planets.count {
       let ratio = planet(at: i).radiusInEarths / largestRadius
       scaleFactors[i] = pow(ratio, AppConstants.planetImageScaleFactor)
     }

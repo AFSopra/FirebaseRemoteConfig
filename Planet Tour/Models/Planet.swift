@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 public struct Planet {
-
   // MARK: - Properties
   public let name: String
   public let yearInDays: Double
@@ -47,7 +45,7 @@ public struct Planet {
     self.massInEarths = massInEarths
     self.radiusInEarths = radiusInEarths
     self.funFact = funFact
-    self.image = UIImage(named: imageName)!
+    image = UIImage(named: imageName)!
     self.imageCredit = imageCredit
   }
 }

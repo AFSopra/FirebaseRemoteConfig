@@ -26,11 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 class GetNewsletterViewController: UIViewController {
-
   // MARK: - IBOutlets
   @IBOutlet weak var instructionLabel: UILabel!
   @IBOutlet weak var thankYouLabel: UILabel!
@@ -49,8 +47,7 @@ class GetNewsletterViewController: UIViewController {
 
 // MARK: - IBActions
 extension GetNewsletterViewController {
-
-  @IBAction func submitButtonWasPressed(_ sender: AnyObject) {
+  @IBAction func submitButtonWasPressed(_: AnyObject) {
     // We won't actually submit an email, but we can pretend
     submitButton.isHidden = true
     thankYouLabel.isHidden = false
@@ -60,12 +57,11 @@ extension GetNewsletterViewController {
 
 // MARK: - Private
 private extension GetNewsletterViewController {
-
   func updateText() {
     instructionLabel.text = AppConstants.subscribeVCText
     submitButton.setTitle(AppConstants.subscribeVCButton, for: .normal)
   }
-  
+
   func updateSubmitButton() {
     submitButton.backgroundColor = AppConstants.appPrimaryColor
     submitButton.layer.cornerRadius = 5.0
