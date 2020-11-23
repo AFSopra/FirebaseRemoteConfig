@@ -1,0 +1,89 @@
+/// Copyright (c) 2020 Razeware LLC
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
+
+import Firebase
+
+class RCValues {
+  static let sharedInstance = RCValues()
+
+  private init() {
+    loadDefaultValues()
+    fetchCloudValues()
+  }
+
+  func loadDefaultValues() {
+    // pasamos un conjunto de clave-valor al RC como default
+    let appDefaults: [String: Any?] = [
+      "appPrimaryColor": "#FBB03B",
+    ]
+    RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
+  }
+
+  // creamos una función para actualizar los valores
+  func fetchCloudValues() {
+    // 1
+    // WARNING: Don't actually do this in production!
+    // por defecto, RC tiene una cache en la nube de unas 12 horas. En produccion esto esta piola
+    // pero para desarrollar lo bajamos a 0, ESTO NO SE SUBIRÍA
+    // quedaria como sigue. De esta manera evitamos saturar el servidor también
+
+    // ademas, una vez recuperemos los valores, los activamos, 3er paso del proceso general
+    #if DEBUG
+      let fetchDuration: TimeInterval = 0
+
+      RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
+
+        if let error = error {
+          print("Uh-oh. Got an error fetching remote values \(error)")
+          return
+        }
+
+        RemoteConfig.remoteConfig().activateFetched()
+        print("DEBUG - Retrieved values from the cloud!")
+
+        // Podríamos obtener los valores como sigue, con su clave
+        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor"))")
+        // Puede venir en 3 valores distintos
+        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").stringValue ?? "")")
+        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").boolValue)")
+        print("Our app's primary color is \(RemoteConfig.remoteConfig().configValue(forKey: "appPrimaryColor").numberValue ?? 0)")
+
+      }
+    #else
+      RemoteConfig.remoteConfig().fetch { _, error in
+        if let error = error {
+          print("Uh-oh. Got an error fetching remote values \(error)")
+          return
+        }
+
+        RemoteConfig.remoteConfig().activateFetched()
+        print("PRO - Retrieved values from the cloud!")
+      }
+    #endif
+  }
+}
