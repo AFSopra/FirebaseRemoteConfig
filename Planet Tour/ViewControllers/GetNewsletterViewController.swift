@@ -58,8 +58,8 @@ extension GetNewsletterViewController {
 // MARK: - Private
 private extension GetNewsletterViewController {
   func updateText() {
-    instructionLabel.text = AppConstants.subscribeVCText
-    submitButton.setTitle(AppConstants.subscribeVCButton, for: .normal)
+    instructionLabel.text = RCValues.sharedInstance.string(forKey: .subscribeVCText)
+    submitButton.setTitle(RCValues.sharedInstance.string(forKey: .subscribeVCButton), for: .normal)
   }
 
   func updateSubmitButton() {

@@ -108,7 +108,7 @@ extension PlanetsCollectionViewController {
   func customizeNavigationBar() {
     guard let navBar = navigationController?.navigationBar else { return }
 
-    navBar.barTintColor = AppConstants.navBarBackground
+    navBar.barTintColor = RCValues.sharedInstance.color(forKey: .navBarBackground)
     let targetFont = UIFont(name: "Avenir-black", size: 18.0) ?? UIFont.systemFont(ofSize: 18.0)
     navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
                                   NSAttributedStringKey.font: targetFont]
@@ -151,7 +151,7 @@ extension PlanetsCollectionViewController {
     cell.imageWidth.constant = planetImageSize
     cell.imageHeight.constant = planetImageSize
     cell.nameLabel.text = currentPlanet.name
-    cell.nameLabel.textColor = AppConstants.bigLabelColor
+    cell.nameLabel.textColor = RCValues.sharedInstance.color(forKey: .bigLabelColor)
     return cell
   }
 }

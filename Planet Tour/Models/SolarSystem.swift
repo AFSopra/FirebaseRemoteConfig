@@ -96,7 +96,7 @@ class SolarSystem {
              imageCredit: "NASA"),
     ]
 
-    if AppConstants.shouldWeIncludePluto {
+    if RCValues.sharedInstance.bool(forKey: .shouldWeIncludePluto){
       let pluto = Planet(name: "Pluto",
                          yearInDays: 90581,
                          massInEarths: 0.002,
@@ -116,7 +116,7 @@ class SolarSystem {
     let largestRadius = planet(at: 4).radiusInEarths
     for i in 0 ..< planets.count {
       let ratio = planet(at: i).radiusInEarths / largestRadius
-      scaleFactors[i] = pow(ratio, AppConstants.planetImageScaleFactor)
+      scaleFactors[i] = pow(ratio, RCValues.sharedInstance.double(forKey: .planetImageScaleFactor))
     }
   }
 
