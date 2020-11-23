@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planet Tour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFd-X8-uys">
+                                <rect key="frame" x="99.5" y="28" width="176" height="45.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="33"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The planets in the palm of your hand!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-sd-lBi">
+                                <rect key="frame" x="45.5" y="600.5" width="284" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Not literally)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD7-W7-foF">
+                                <rect key="frame" x="153.5" y="630.5" width="68.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mars" translatesAutoresizingMaskIntoConstraints="NO" id="btk-Q5-ZUp">
+                                <rect key="frame" x="65.5" y="108.5" width="244" height="244"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="btk-Q5-ZUp" secondAttribute="height" multiplier="1:1" id="adu-yd-qcE"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EFd-X8-uys" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7gR-Zb-Ab9"/>
+                            <constraint firstItem="EFd-X8-uys" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="Biu-Fh-caE"/>
+                            <constraint firstItem="btk-Q5-ZUp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ID8-aT-Fhx"/>
+                            <constraint firstItem="JD7-W7-foF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LIW-9c-XcO"/>
+                            <constraint firstItem="btk-Q5-ZUp" firstAttribute="top" secondItem="EFd-X8-uys" secondAttribute="bottom" constant="35" id="NTA-yb-Hul"/>
+                            <constraint firstItem="aMg-sd-lBi" firstAttribute="centerX" secondItem="JD7-W7-foF" secondAttribute="centerX" id="UfX-Fa-uVZ"/>
+                            <constraint firstItem="btk-Q5-ZUp" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.65" id="XOV-AE-ROZ"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="JD7-W7-foF" secondAttribute="bottom" constant="20" id="eB2-Ge-P6f"/>
+                            <constraint firstItem="JD7-W7-foF" firstAttribute="top" secondItem="aMg-sd-lBi" secondAttribute="bottom" constant="7" id="fc2-DS-92M"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Mars" width="200" height="200"/>
+    </resources>
+</document>
